@@ -20,11 +20,11 @@ async fn main() -> Result<()> {
 
         let stat_data = Stat {
             system_identifier: sys.host_name().unwrap_or("unknown".to_string()),
-            total_memory: sys.total_memory(),
-            used_memory: sys.used_memory(),
-            total_swap: sys.total_swap(),
-            used_swap: sys.used_swap(),
-            uptime: sys.uptime(),
+            total_memory: sys.total_memory() as i64,
+            used_memory: sys.used_memory() as i64,
+            total_swap: sys.total_swap() as i64,
+            used_swap: sys.used_swap() as i64,
+            uptime: sys.uptime() as i64,
             timestamp: chrono::Utc::now().to_rfc3339(),
         };
 
