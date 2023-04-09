@@ -1,4 +1,6 @@
-#[derive(Debug)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Stat {
     pub system_identifier: String,
     pub total_memory: u64,
