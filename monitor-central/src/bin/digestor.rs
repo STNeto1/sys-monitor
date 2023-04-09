@@ -28,6 +28,4 @@ async fn main() -> Result<()> {
             }
         }
     }
-
-    return Ok(());
 }

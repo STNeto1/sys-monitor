@@ -25,6 +25,7 @@ async fn main() -> Result<()> {
             total_swap: sys.total_swap(),
             used_swap: sys.used_swap(),
             uptime: sys.uptime(),
+            timestamp: chrono::Utc::now().to_rfc3339(),
         };
 
         match send_message(&aws_client, &stat_data).await {

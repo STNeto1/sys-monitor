@@ -8,4 +8,5 @@ pub struct Stat {
     pub total_swap: u64,
     pub used_swap: u64,
     pub uptime: u64,
+    pub timestamp: String,
 }
