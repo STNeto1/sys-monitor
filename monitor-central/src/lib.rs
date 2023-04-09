@@ -1,5 +1,8 @@
+use std::env;
+
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
+use uuid::Uuid;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Stat {
@@ -12,9 +15,9 @@ pub struct Stat {
     pub timestamp: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, FromRow)]
+#[derive(Debug, Clone, FromRow, Serialize, Deserialize)]
 pub struct DBStat {
-    pub id: String,
+    pub id: Uuid,
     pub system_identifier: String,
     pub total_memory: i64,
     pub used_memory: i64,
@@ -22,4 +25,8 @@ pub struct DBStat {
     pub used_swap: i64,
     pub uptime: i64,
     pub timestamp: String,
+}
+
+pub fn get_from_env(key: &str) -> String {
+    env::var(key).expect(&format!("{} must be set", key))
 }

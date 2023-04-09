@@ -1,14 +1,8 @@
-use std::env;
-
 use anyhow::Result;
 use aws_sdk_sqs::Client;
 use dotenv::dotenv;
-use monitor_central::Stat;
+use monitor_central::{get_from_env, Stat};
 use sqlx::postgres::PgPoolOptions;
-
-fn get_from_env(key: &str) -> String {
-    env::var(key).expect(&format!("{} must be set", key))
-}
 
 #[tokio::main]
 async fn main() -> Result<()> {
