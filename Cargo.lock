@@ -813,8 +813,13 @@ dependencies = [
 name = "monitor-central"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "aws-config",
+ "aws-sdk-sqs",
+ "dotenv",
  "serde",
  "serde_json",
+ "tokio",
 ]
 
 [[package]]

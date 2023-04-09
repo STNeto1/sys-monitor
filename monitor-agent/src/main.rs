@@ -11,7 +11,7 @@ async fn main() -> Result<()> {
     dotenv().expect("No .env file found");
 
     let config = aws_config::load_from_env().await;
-    let _aws_client = Client::new(&config);
+    let aws_client = Client::new(&config);
 
     let mut sys = System::new_all();
 
@@ -27,7 +27,7 @@ async fn main() -> Result<()> {
             uptime: sys.uptime(),
         };
 
-        match send_message(&_aws_client, &stat_data).await {
+        match send_message(&aws_client, &stat_data).await {
             Ok(_) => println!("Sent message: {:?}", stat_data),
             Err(e) => {
                 println!("Error sending message: {}", e);
